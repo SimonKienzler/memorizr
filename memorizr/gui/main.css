@@ -1,0 +1,15 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: "Open Sans";
+	font-size: small;
+	color: #666;
+}
+
+.error {
+	color: #c00;
+	font-weight: bold;
+}

@@ -1,0 +1,8 @@
+# Gitignore file for the memorizr project
+
+# ignore the folders dirty & songs
+dirty/
+songs/
+
+# ignore the config file in the memorizr subfolder
+memorizr/config.php
