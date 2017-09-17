@@ -12,7 +12,13 @@
 	
 		$memorizr = new Memorizr();
 		
-		$memorizr::run();
+		if(isset($_GET['page'])) {
+			$page = $_GET['page'];
+		} else {
+			$page = "index";
+		} 
+		
+		$memorizr->run($page);
 	?>
   </body>
 </html>

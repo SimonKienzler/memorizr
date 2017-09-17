@@ -43,7 +43,7 @@
 				 __DIR__ . "./../../" . $SONG_FILE_PATH . "/" . $id . ".mp3");
 		}
 		
-		public static function generateFileList() {
+		public static function generateDirtyFileList() {
 			require(__DIR__ . "./../config.php");
 			// excluding '.' and '..' from the returned array 
 			$fileList= array_filter(scandir(__DIR__ . "./../../" . $DIRTY_FILE_PATH), function($item) {

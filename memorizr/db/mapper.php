@@ -50,5 +50,12 @@
 			}
 			
 		}
+		
+		public static function songIdExists($songId) {
+			$stmt = self::$connection->prepare("SELECT id FROM song WHERE id = UNHEX(:id);");
+			$stmt->bindParam(":id",$songId);
+			$stmt->execute();
+			return $stmt->fetch();
+		}
 	
 	}
