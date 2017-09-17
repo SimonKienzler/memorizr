@@ -9,7 +9,16 @@ body {
 	color: #666;
 }
 
+p {
+	margin: 0px 0px 1em 0px;
+}
+
 .error {
 	color: #c00;
+	font-weight: bold;
+}
+
+.info {
+	color: #00c;
 	font-weight: bold;
 }

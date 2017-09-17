@@ -3,12 +3,12 @@
 	class Filer {
 		
 		public static function createSongFromDirtyFile($filepath) {
-			
+			require(__DIR__ . "./../config.php");
 			require_once("/../getid3/getid3.php");
 
 			$getID3 = new getID3;
 
-			$info = $getID3->analyze($filepath);
+			$info = $getID3->analyze(__DIR__ . "./../../" . $DIRTY_FILE_PATH . "/" . $filepath);
 			
 			$song = new Song();
 			
@@ -24,7 +24,8 @@
 		}
 		
 		public static function createSHA1FromDirtyFile($filepath) {
-			return sha1_file($filepath,false);
+			require(__DIR__ . "./../config.php");
+			return sha1_file(__DIR__ . "./../../". $DIRTY_FILE_PATH . "/". $filepath,false);
 		}
 		
 		public static function tagIfIsSet($infoArray,$tag) {
@@ -33,6 +34,22 @@
 			} else {
 				return null;
 			}
+		}
+		
+		public static function saveSongToFile($song,$dirtySongFilepath) {
+			require(__DIR__ . "./../config.php");
+			$id = $song->getValueFor("id");
+			copy(__DIR__ . "./../../" . $DIRTY_FILE_PATH . "/" . $dirtySongFilepath,
+				 __DIR__ . "./../../" . $SONG_FILE_PATH . "/" . $id . ".mp3");
+		}
+		
+		public static function generateFileList() {
+			require(__DIR__ . "./../config.php");
+			// excluding '.' and '..' from the returned array 
+			$fileList= array_filter(scandir(__DIR__ . "./../../" . $DIRTY_FILE_PATH), function($item) {
+				return $item[0] !== '.';
+			});
+			return $fileList;
 		}
 		
 	}
