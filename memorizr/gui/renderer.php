@@ -51,9 +51,10 @@
 			require_once(__DIR__ . "./../obj/song.php");
 			return "<div class='search-result'>" . 
 						"<h3>" . $song->getValueFor("title") . "</h3>" .
-						"<p><span class='fa fa-user'></span> " . $song->getValueFor("artist") . " | " .
-						"<span class='fa fa-music'></span> " . $song->getValueFor("album") . ", " . $song->getValueFor("year") . " | " .
-						"<span class='fa fa-tag'></span> " . id3_get_genre_name($song->getValueFor("genre")) . "</p>" .
+						"<p><span class='artist'><span class='fa fa-user'></span> " . $song->getValueFor("artist") . "</span> " .
+						"<span class='album'><span class='fa fa-music'></span> " . $song->getValueFor("album") . 
+						", " . $song->getValueFor("year") . "</span> " .
+						"<span class='genre'><span class='fa fa-tag'></span> " . id3_get_genre_name($song->getValueFor("genre")) . "</span></p>" .
 					"</div>";
 		}
 	

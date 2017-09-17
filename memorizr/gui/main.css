@@ -81,6 +81,7 @@ h2 {
 
 h3 {
 	font-weight: lighter;
+	font-size: 150%;
 }
 
 p {
@@ -119,4 +120,19 @@ p {
 .search-result {
 	border-bottom: 1px solid #555;
 	padding: 8px 8px 0px 8px;
+}
+
+#results p {
+	font-size: 110%;
+}
+
+#results .artist,
+#results .album,
+#results .genre {
+	margin: 0px 8px 0px 0px;
+}
+
+#results .fa {
+	color: #555;
+	margin: 0px 4px 0px 0px;
 }
