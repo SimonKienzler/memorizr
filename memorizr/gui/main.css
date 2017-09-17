@@ -6,7 +6,67 @@
 body {
 	font-family: "Open Sans";
 	font-size: small;
-	color: #666;
+	color: #eee;
+	background: #222;
+}
+
+#top {
+	padding: 8px;
+	height: 50px;
+}
+
+#main {
+	position: absolute;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	top: 50px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+}
+
+#navi {
+	background: rgba(120,120,120,.4);
+	list-style: none;
+}
+
+#memo-output {
+	flex-grow: 10;
+	padding: 8px;
+}
+
+#player {
+	background: rgba(120,120,120,.4);
+	width: 400px;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+#navi a:link,
+#navi a:visited {
+	display: block;
+	padding: 16px 8px;
+	color: #111;
+	text-decoration: none;
+	text-align: center;
+}
+
+#navi a:focus,
+#navi a:hover,
+#navi a:active {
+	background: rgba(120,120,120,.4);
+}
+
+#navi a .fa {
+	display: block;
+	font-size: 300%;
+	margin: 0px 0px 8px 0px;
+}
+
+h1 .fa {
+	color: #6c6;
 }
 
 p {
@@ -14,11 +74,11 @@ p {
 }
 
 .error {
-	color: #c00;
+	color: #c66;
 	font-weight: bold;
 }
 
 .info {
-	color: #00c;
+	color: #66c;
 	font-weight: bold;
 }
