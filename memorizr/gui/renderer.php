@@ -36,5 +36,25 @@
 		public static function player() {
 			return "<div id='player'></div>";
 		}
+		
+		public static function pageHeader($pageHeader) {
+			return "<h2>" . $pageHeader . "</h2>";
+		}
+		
+		public static function searchForm($method,$action) {
+			return "<div class='form'><form method='" . $method . "' action='" . $action . "'>" .
+					"<input type='text' class='search' placeholder='Suche nach...' onkeyup='showResult(this.value)' />" .
+					"</form></div>";
+		}
+		
+		public static function searchResult($song) {
+			require_once(__DIR__ . "./../obj/song.php");
+			return "<div class='search-result'>" . 
+						"<h3>" . $song->getValueFor("title") . "</h3>" .
+						"<p><span class='fa fa-user'></span> " . $song->getValueFor("artist") . " | " .
+						"<span class='fa fa-music'></span> " . $song->getValueFor("album") . ", " . $song->getValueFor("year") . " | " .
+						"<span class='fa fa-tag'></span> " . id3_get_genre_name($song->getValueFor("genre")) . "</p>" .
+					"</div>";
+		}
 	
 	}

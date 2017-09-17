@@ -57,5 +57,38 @@
 			$stmt->execute();
 			return $stmt->fetch();
 		}
+		
+		public static function searchForTerm($term) {
+			/*$parts = explode(" ", $term);
+			$searchString = "jr5$_grl";
+			foreach($parts as $part) {
+				searchString = searchString . " OR %" . $part . "%";
+			}*/
+			
+			require_once(__DIR__ . "./../obj/song.php");
+			$stmt = self::$connection->prepare("SELECT HEX(id) as id, title, artist, album, year, genre, memory " .
+												"FROM song WHERE title LIKE :term1 " . 
+												"OR artist like :term2 " .
+												"OR album like :term3;");
+			$searchString = "%" . $term . "%";
+			$stmt->bindParam(":term1",$searchString);
+			$stmt->bindParam(":term2",$searchString);
+			$stmt->bindParam(":term3",$searchString);
+			$stmt->execute();
+			$results = array();
+			$i = 0;
+			while($row = $stmt->fetch()) {
+				$results[$i] = new Song();
+				$results[$i]->setValueFor("id",$row['id']); 
+				$results[$i]->setValueFor("title",$row['title']); 
+				$results[$i]->setValueFor("artist",$row['artist']); 
+				$results[$i]->setValueFor("album",$row['album']); 
+				$results[$i]->setValueFor("year",$row['year']); 
+				$results[$i]->setValueFor("genre",$row['genre']); 
+				$results[$i++]->setValueFor("memory",$row['memory']);
+			}
+			
+			return $results;
+		}
 	
 	}

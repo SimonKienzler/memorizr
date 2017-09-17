@@ -3,8 +3,11 @@
 	padding: 0;
 }
 
-body {
+body, input {
 	font-family: "Open Sans";
+}
+
+body {
 	font-size: small;
 	color: #eee;
 	background: #222;
@@ -34,7 +37,8 @@ body {
 
 #memo-output {
 	flex-grow: 10;
-	padding: 8px;
+	padding: 16px;
+	overflow: auto;
 }
 
 #player {
@@ -69,16 +73,50 @@ h1 .fa {
 	color: #6c6;
 }
 
+h2 {
+	color: #fff;
+	font-weight: lighter;
+	font-size: 200%;
+}
+
+h3 {
+	font-weight: lighter;
+}
+
 p {
 	margin: 0px 0px 1em 0px;
 }
 
 .error {
 	color: #c66;
-	font-weight: bold;
 }
 
 .info {
 	color: #66c;
-	font-weight: bold;
+}
+
+.form {
+	margin: 8px 0px 16px 0px;
+	width: 100%;
+}
+
+.form form * {
+	width: 100%;
+	border: 0px solid rgba(0,0,0,0);
+	background: rgba(0,0,0,.6);
+	padding: 8px 16px;
+	border-radius: 8px;
+	color: #eee;
+	font-size: 150%;
+	box-sizing: border-box;
+	font-weight: lighter;
+}
+
+#results {
+	border-top: 1px solid #555;
+}
+
+.search-result {
+	border-bottom: 1px solid #555;
+	padding: 8px 8px 0px 8px;
 }

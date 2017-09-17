@@ -31,5 +31,25 @@
 		
 		
 	?>
+	
+		<script>
+			function showResult(str) {
+				if (str.length==0) {
+					document.getElementById("results").innerHTML="";
+					return;
+				}
+				
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+				
+				xmlhttp.onreadystatechange=function() {
+					if (this.readyState==4 && this.status==200) {
+						document.getElementById("results").innerHTML=this.responseText;
+					}
+				}
+				xmlhttp.open("GET","./memorizr/api.php?query-string="+str,true);
+				xmlhttp.send();
+			}
+		</script>
   </body>
 </html>

@@ -23,7 +23,9 @@
 		}
 		
 		public function index() {
-			echo Renderer::info("Under construction","The index page of this app has not yet been created.");
+			echo Renderer::pageHeader("Stöbere durch Deine Musik");
+			echo Renderer::searchForm("post","?page=index");
+			echo "<div id='results'></div>";
 		}
 		
 		public function import() {
