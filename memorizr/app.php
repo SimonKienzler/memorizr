@@ -31,17 +31,31 @@
 		public function import() {
 			$files = Filer::generateDirtyFileList();
 			
+			$numOfFiles = count($files);
+			
+			if(!isset($_GET['import'])) {
+				echo Renderer::info("We found " . $numOfFiles . " Songs to import.","Here's a list of them for you to review." .
+									" You can start the import by clicking the button on the bottom of this page.");
+				$i = 1;
+				foreach($files as $file) {
+					echo "<p><strong>" . $i++ . ")</strong> " . $file . "</p>";					
+				}
+				echo Renderer::info("", "<a href='./?page=import&import=true'>Start import now</a>");
+				return;
+			}
+			
+			$i = 1;
+			
 			foreach($files as $file) {
 				$cleanSong = Filer::createSongFromDirtyFile($file);
 				if(!Mapper::songIdExists($cleanSong->getValueFor("id"))) {
-					echo Renderer::info("Song indexed",
-										"Title: " . $cleanSong->getValueFor("title") . 
-										", Artist: " . $cleanSong->getValueFor("artist") . 
-										", ID: " . $cleanSong->getValueFor("id"));
 					Filer::saveSongToFile($cleanSong,$file);
 					Mapper::saveSong($cleanSong);
+					echo Renderer::info("(" . $i++ . "/" . $numOfFiles . ") Song indexed",
+										"Title: " . $cleanSong->getValueFor("title") . 
+										", Artist: " . $cleanSong->getValueFor("artist"));
 				} else {
-					echo Renderer::info("Song already exists",
+					echo Renderer::info("(" . $i++ . "/" . $numOfFiles . ") Song already exists",
 										"The song <strong>" . $cleanSong->getValueFor("title") .
 										"</strong> by <strong>" . $cleanSong->getValueFor("artist") .
 										"</strong> already exists in the Memorizr Database and will be skipped.");

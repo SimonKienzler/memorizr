@@ -69,7 +69,7 @@
 			$stmt = self::$connection->prepare("SELECT HEX(id) as id, title, artist, album, year, genre, memory " .
 												"FROM song WHERE title LIKE :term1 " . 
 												"OR artist like :term2 " .
-												"OR album like :term3;");
+												"OR album like :term3 limit 20;");
 			$searchString = "%" . $term . "%";
 			$stmt->bindParam(":term1",$searchString);
 			$stmt->bindParam(":term2",$searchString);
