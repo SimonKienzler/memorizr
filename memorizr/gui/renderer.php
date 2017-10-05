@@ -34,7 +34,7 @@
 		}
 		
 		public static function player() {
-			return "<div id='player'></div>";
+			return "<div id='player'><audio src='songs/02a13a6b3d317dae5a7cb2b514e0ee066bac77db.mp3' preload='auto' /></div>";
 		}
 		
 		public static function pageHeader($pageHeader) {

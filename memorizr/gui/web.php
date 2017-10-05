@@ -31,7 +31,17 @@
 		
 		
 	?>
-	
+		<!-- includes audio.js -->
+		<script src="./audiojs/audio.min.js"></script>
+		
+		<!-- initializes audio.js -->
+		<script>
+		  audiojs.events.ready(function() {
+			var as = audiojs.createAll();
+		  });
+		</script>	
+		
+		<!-- realizes on the fly search functionality -->
 		<script>
 			function showResult(str) {
 				if (str.length==0) {
