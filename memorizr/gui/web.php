@@ -61,5 +61,12 @@
 				xmlhttp.send();
 			}
 		</script>
+		
+		<!-- sets song id for song to be played -->
+		<script>
+			function playSong(id) {
+				document.getElementById("player-audio").setAttribute("src","songs/" + id + ".mp3");
+			}
+		</script>
   </body>
 </html>

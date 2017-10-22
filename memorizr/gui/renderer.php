@@ -34,7 +34,7 @@
 		}
 		
 		public static function player() {
-			return "<div id='player'><audio src='songs/02a13a6b3d317dae5a7cb2b514e0ee066bac77db.mp3' preload='auto' /></div>";
+			return "<div id='player'><audio src='songs/02a13a6b3d317dae5a7cb2b514e0ee066bac77db.mp3' preload='auto' id='player-audio'/></div>";
 		}
 		
 		public static function pageHeader($pageHeader) {
@@ -50,11 +50,16 @@
 		public static function searchResult($song) {
 			require_once(__DIR__ . "./../obj/song.php");
 			return "<div class='search-result'>" . 
-						"<h3>" . $song->getValueFor("title") . "</h3>" .
-						"<p><span class='artist'><span class='fa fa-user'></span> " . $song->getValueFor("artist") . "</span> " .
-						"<span class='album'><span class='fa fa-music'></span> " . $song->getValueFor("album") . 
-						", " . $song->getValueFor("year") . "</span> " .
-						"<span class='genre'><span class='fa fa-tag'></span> " . id3_get_genre_name($song->getValueFor("genre")) . "</span></p>" .
+						"<div class='song-info'>" .
+							"<h3>" . $song->getValueFor("title") . "</h3>" .
+							"<p>" .
+								"<span class='artist'><span class='fa fa-user'></span> " . $song->getValueFor("artist") . "</span> " .
+								"<span class='album'><span class='fa fa-music'></span> " . $song->getValueFor("album") . 
+								", " . $song->getValueFor("year") . "</span> " .
+								"<span class='genre'><span class='fa fa-tag'></span> " . id3_get_genre_name($song->getValueFor("genre")) . "</span>" .
+							"</p>" .
+						"</div>" .
+						"<button onclick='playSong(\"" . $song->getValueFor("id") . "\")'><span class='fa fa-play-circle'></span></button>" .
 					"</div>";
 		}
 	
